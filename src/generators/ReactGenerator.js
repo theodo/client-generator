@@ -7,22 +7,22 @@ export default class extends BaseGenerator {
 
     this.registerTemplates("react-common/", [
       // actions
-      "actions/foo/create.js",
-      "actions/foo/delete.js",
-      "actions/foo/list.js",
-      "actions/foo/update.js",
-      "actions/foo/show.js",
+      "actions/foo/create.ts",
+      "actions/foo/delete.ts",
+      "actions/foo/list.ts",
+      "actions/foo/update.ts",
+      "actions/foo/show.ts",
 
       // utils
-      "utils/dataAccess.js",
+      "utils/dataAccess.ts",
 
       // reducers
-      "reducers/foo/create.js",
-      "reducers/foo/delete.js",
-      "reducers/foo/index.js",
-      "reducers/foo/list.js",
-      "reducers/foo/update.js",
-      "reducers/foo/show.js"
+      "reducers/foo/create.ts",
+      "reducers/foo/delete.ts",
+      "reducers/foo/index.ts",
+      "reducers/foo/list.ts",
+      "reducers/foo/update.ts",
+      "reducers/foo/show.ts"
     ]);
 
     this.registerTemplates(`react/`, [
@@ -32,10 +32,10 @@ export default class extends BaseGenerator {
       "components/foo/index.js",
       "components/foo/List.js",
       "components/foo/Update.js",
-      "components/foo/Show.js",
+      "components/foo/Show.tsx",
 
       // routes
-      "routes/foo.js"
+      "routes/foo.tsx"
     ]);
   }
 
@@ -96,11 +96,11 @@ combineReducers({ ${titleLc},/* ... */ }),
 
     [
       // actions
-      "actions/%s/create.js",
-      "actions/%s/delete.js",
-      "actions/%s/list.js",
-      "actions/%s/update.js",
-      "actions/%s/show.js",
+      "actions/%s/create.ts",
+      "actions/%s/delete.ts",
+      "actions/%s/list.ts",
+      "actions/%s/update.ts",
+      "actions/%s/show.ts",
 
       // components
       "components/%s/Create.js",
@@ -108,28 +108,31 @@ combineReducers({ ${titleLc},/* ... */ }),
       "components/%s/index.js",
       "components/%s/List.js",
       "components/%s/Update.js",
-      "components/%s/Show.js",
+      "components/%s/Show.tsx",
 
       // reducers
-      "reducers/%s/create.js",
-      "reducers/%s/delete.js",
-      "reducers/%s/index.js",
-      "reducers/%s/list.js",
-      "reducers/%s/update.js",
-      "reducers/%s/show.js",
+      "reducers/%s/create.ts",
+      "reducers/%s/delete.ts",
+      "reducers/%s/index.ts",
+      "reducers/%s/list.ts",
+      "reducers/%s/update.ts",
+      "reducers/%s/show.ts",
 
       // routes
-      "routes/%s.js"
+      "routes/%s.tsx"
     ].forEach(pattern => this.createFileFromPattern(pattern, dir, lc, context));
 
     // utils
     this.createFile(
-      "utils/dataAccess.js",
-      `${dir}/utils/dataAccess.js`,
+      "utils/dataAccess.ts",
+      `${dir}/utils/dataAccess.ts`,
       context,
       false
     );
 
-    this.createEntrypoint(api.entrypoint, `${dir}/config/entrypoint.js`);
+    this.createEntrypoint(
+      `${api.entrypoint}/${resource.name}/`,
+      `${dir}/config/entrypoint.ts`
+    );
   }
 }
