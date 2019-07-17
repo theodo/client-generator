@@ -169,8 +169,8 @@ const mapStateToProps = state => {
 };
 
 const mapDispatchToProps = dispatch => ({
-  list: page => dispatch(list(page)),
-  reset: eventSource => dispatch(reset(eventSource))
+  list: page => list(page)(dispatch),
+  reset: eventSource => reset(eventSource)(dispatch)
 });
 
 export default connect(

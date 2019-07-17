@@ -114,10 +114,10 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  retrieve: id => dispatch(retrieve(id)),
-  update: (item, values) => dispatch(update(item, values)),
-  del: item => dispatch(del(item)),
-  reset: eventSource => dispatch(reset(eventSource))
+  retrieve: id => retrieve(id)(dispatch),
+  update: (item, values) => update(item, values)(dispatch),
+  del: item => del(item)(dispatch),
+  reset: eventSource => reset(eventSource)(dispatch)
 });
 
 export default connect(
