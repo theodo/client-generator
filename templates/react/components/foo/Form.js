@@ -46,6 +46,7 @@ class Form extends Component {
 
   render() {
     return (<Formik
+      initialValues={this.props.initialValues}
       onSubmit={value => {
         console.log(value);
         this.props.onSubmit(value);
@@ -59,12 +60,10 @@ class Form extends Component {
             type="{{{type}}}"{{#if step}}
             step="{{{step}}}"{{/if}}
             value={props.values['{{{name}}}']}
-            render={field => (
+            render={({ field }) => (
               <TextField
                 id="{{{name}}}"
                 label="{{{name}}}"
-                onChange={props.handleChange}
-                onBlur={props.handleBlur}
                 margin="normal"
                 {...field}
               />
@@ -75,7 +74,36 @@ class Form extends Component {
             // normalize={v => parseFloat(v)}{{/if}}
           />
 {{/each}}
-
+          {/* <FieldArray
+                name="roles"
+                render={arrayHelpers => (
+                  <>
+                    {props.values['roles'] && props.values['roles'].length > 0 ? (
+                      props.values['roles'].map((role, index) => (
+                        <div key={index}>
+                          <Field name={`roles.${index}`} />
+                          <button
+                            type="button"
+                            onClick={() => arrayHelpers.remove(index)} // remove a friend from the list
+                          >
+                            -
+                          </button>
+                          <button
+                            type="button"
+                            onClick={() => arrayHelpers.insert(index, '')} // insert an empty string at a position
+                          >
+                            +
+                          </button>
+                        </div>
+                      ))
+                    ) : (
+                      <button type="button" onClick={() => arrayHelpers.push('')}>
+                        Add a friend
+                      </button>
+                    )}
+                  </>
+                )}
+              /> */}
           <button type="submit" className="btn btn-success">
             Submit
           </button>
