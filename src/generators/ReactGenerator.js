@@ -130,9 +130,6 @@ combineReducers({ ${titleLc},/* ... */ }),
       false
     );
 
-    this.createEntrypoint(
-      `${api.entrypoint}/${resource.name}/`,
-      `${dir}/config/entrypoint.ts`
-    );
+    this.createEntrypoint(`${api.entrypoint}`, `${dir}/config/entrypoint.ts`);
   }
 }
