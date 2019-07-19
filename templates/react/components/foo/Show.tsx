@@ -5,6 +5,7 @@ import { Link, Redirect } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { retrieve, reset } from '../../actions/{{{lc}}}/show';
 import { del } from '../../actions/{{{lc}}}/delete';
+import { RootState } from '../../../redux/types';
 import 'bootstrap/dist/css/bootstrap.css';
 
 interface Props {
@@ -123,7 +124,7 @@ class Show extends Component<Props> {
   };
 }
 
-const mapStateToProps = (state: any) => ({
+const mapStateToProps = (state: RootState) => ({
   retrieved: state.{{{lc}}}.show.retrieved,
   error: state.{{{lc}}}.show.error,
   loading: state.{{{lc}}}.show.loading,

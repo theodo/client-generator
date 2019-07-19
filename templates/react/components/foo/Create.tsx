@@ -5,6 +5,7 @@ import PropTypes from 'prop-types';
 import Form from './Form';
 import { create, reset } from '../../actions/{{{lc}}}/create';
 import { Dispatch } from 'redux';
+import { RootState } from '../../../redux/types';
 import 'bootstrap/dist/css/bootstrap.css';
 
 interface Props {
@@ -62,7 +63,7 @@ class Create extends Component<Props> {
   }
 }
 
-const mapStateToProps = (state: any) => {
+const mapStateToProps = (state: RootState) => {
   const { created, error, loading } = state.{{{lc}}}.create;
   return { created, error, loading };
 };
