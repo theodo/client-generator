@@ -29,7 +29,7 @@ export default class extends BaseGenerator {
       // components
       "components/foo/Create.tsx",
       "components/foo/Form.tsx",
-      "components/foo/index.js",
+      "components/foo/index.tsx",
       "components/foo/List.tsx",
       "components/foo/Update.tsx",
       "components/foo/Show.tsx",
@@ -105,7 +105,7 @@ combineReducers({ ${titleLc},/* ... */ }),
       // components
       "components/%s/Create.tsx",
       "components/%s/Form.tsx",
-      "components/%s/index.js",
+      "components/%s/index.tsx",
       "components/%s/List.tsx",
       "components/%s/Update.tsx",
       "components/%s/Show.tsx",
