@@ -5,6 +5,7 @@ import PropTypes from 'prop-types';
 import Form from './Form';
 import { retrieve, update, reset } from '../../actions/{{{lc}}}/update';
 import { del } from '../../actions/{{{lc}}}/delete';
+import 'bootstrap/dist/css/bootstrap.css';
 
 class Update extends Component {
   static propTypes = {

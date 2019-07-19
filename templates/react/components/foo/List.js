@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { list, reset } from '../../actions/{{{lc}}}/list';
+import 'bootstrap/dist/css/bootstrap.css';
 
 class List extends Component {
   static propTypes = {

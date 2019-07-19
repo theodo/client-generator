@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import {Formik, Field } from 'formik';
 import TextField from '@material-ui/core/TextField';
+import 'bootstrap/dist/css/bootstrap.css';
 
 class Form extends Component {
   static propTypes = {

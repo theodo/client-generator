@@ -5,6 +5,7 @@ import PropTypes from 'prop-types';
 import Form from './Form';
 import { create, reset } from '../../actions/{{{lc}}}/create';
 import { Dispatch } from 'redux';
+import 'bootstrap/dist/css/bootstrap.css';
 
 interface Props {
   error:any;

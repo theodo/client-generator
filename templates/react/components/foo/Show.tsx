@@ -5,6 +5,7 @@ import { Link, Redirect } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { retrieve, reset } from '../../actions/{{{lc}}}/show';
 import { del } from '../../actions/{{{lc}}}/delete';
+import 'bootstrap/dist/css/bootstrap.css';
 
 interface Props {
   retrieved: any;
