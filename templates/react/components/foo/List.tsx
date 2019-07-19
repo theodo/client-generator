@@ -7,6 +7,9 @@ import { RootState } from '../../../redux/types';
 import { Dispatch } from 'redux';
 import 'bootstrap/dist/css/bootstrap.css';
 
+import ArrowDownward from '@material-ui/icons/ArrowDownward';
+import ArrowUpward from '@material-ui/icons/ArrowUpward';
+
 interface Props {
   retrieved: any;
   loading: any;
@@ -119,7 +122,7 @@ class List extends Component<Props, State> {
                       this.toggleOrdering('{{name}}');
                     }}
                   >
-                    {this.state.sortOrinetation['{{name}}'] ? 'UP' : 'DOWN'}
+                    {this.state.sortOrinetation['{{name}}'] ? <ArrowDownward/> : <ArrowUpward/>}
                   </span>
                 </th>
 {{/each}}
@@ -141,13 +144,13 @@ class List extends Component<Props, State> {
                   <td>
                     <Link to={`show/${encodeURIComponent(item['@id'])}`}>
                       <span className="fa fa-search" aria-hidden="true" />
-                      <span className="sr-only">Show</span>
+                      <span>Show</span>
                     </Link>
                   </td>
                   <td>
                     <Link to={`edit/${encodeURIComponent(item['@id'])}`}>
                       <span className="fa fa-pencil" aria-hidden="true" />
-                      <span className="sr-only">Edit</span>
+                      <span>Edit</span>
                     </Link>
                   </td>
                 </tr>
