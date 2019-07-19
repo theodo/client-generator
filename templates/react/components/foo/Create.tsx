@@ -53,7 +53,7 @@ class Create extends Component<Props> {
           </div>
         )}
 
-        <Form onSubmit={this.props.create} values={this.props.item} />
+        <Form onSubmit={this.props.create} initialValues={this.props.item} />
         <Link to="." className="btn btn-primary">
           Back to list
         </Link>

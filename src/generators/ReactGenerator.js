@@ -28,7 +28,7 @@ export default class extends BaseGenerator {
     this.registerTemplates(`react/`, [
       // components
       "components/foo/Create.tsx",
-      "components/foo/Form.js",
+      "components/foo/Form.tsx",
       "components/foo/index.js",
       "components/foo/List.tsx",
       "components/foo/Update.tsx",
@@ -104,7 +104,7 @@ combineReducers({ ${titleLc},/* ... */ }),
 
       // components
       "components/%s/Create.tsx",
-      "components/%s/Form.js",
+      "components/%s/Form.tsx",
       "components/%s/index.js",
       "components/%s/List.tsx",
       "components/%s/Update.tsx",
