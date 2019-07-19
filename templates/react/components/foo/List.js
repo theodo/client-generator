@@ -14,6 +14,39 @@ class List extends Component {
     list: PropTypes.func.isRequired,
     reset: PropTypes.func.isRequired
   };
+  constructor(props) {
+    super(props);
+    this.state = { sortOrder: [], sortOrinetation: {} };
+  }
+
+  sort = (A, B) => {
+    for (let index = 0; index < this.state.sortOrder.length; index++) {
+      const name = this.state.sortOrder[index];
+
+      if (A[name] > B[name] || A[name] < B[name]) {
+        if (A[name] > B[name]) {
+          return this.state.sortOrinetation[name] ? 1 : -1;
+        }
+        if (A[name] < B[name]) {
+          return this.state.sortOrinetation[name] ? -1 : 1;
+        }
+      }
+    }
+    return 0;
+  };
+
+  toggleOrdering = name => {
+    const newOrdering = !this.state.sortOrinetation[name];
+    this.setState(state => ({
+      sortOrder: [name, ...state.sortOrder.filter(x => x !== name)],
+      sortOrinetation: { ...state.sortOrinetation, [name]: newOrdering },
+    }));
+  };
+
+  sortList = list => {
+    list.sort(this.sort);
+    return list;
+  };
 
   componentDidMount() {
     this.props.list(
@@ -62,14 +95,22 @@ class List extends Component {
             <tr>
               <th>id</th>
 {{#each fields}}
-              <th>{{name}}</th>
+              <th>{{name}}{' '}
+                <span
+                    onClick={() => {
+                      this.toggleOrdering('{{name}}');
+                    }}
+                  >
+                    {this.state.sortOrinetation['{{name}}'] ? 'UP' : 'DOWN'}
+                  </span>
+                </th>
 {{/each}}
               <th colSpan={2} />
             </tr>
           </thead>
           <tbody>
             {this.props.retrieved &&
-              this.props.retrieved['hydra:member'].map(item => (
+              this.sortList(this.props.retrieved['hydra:member']).map(item => (
                 <tr key={item['@id']}>
                   <th scope="row">
                     <Link to={`show/${encodeURIComponent(item['@id'])}`}>
