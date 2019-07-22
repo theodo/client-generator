@@ -34,6 +34,9 @@ export default class extends BaseGenerator {
       "components/foo/Update.tsx",
       "components/foo/Show.tsx",
 
+      //style
+      "components/foo/components.style.tsx",
+
       // routes
       "routes/foo.tsx"
     ]);
@@ -109,6 +112,9 @@ combineReducers({ ${titleLc},/* ... */ }),
       "components/%s/List.tsx",
       "components/%s/Update.tsx",
       "components/%s/Show.tsx",
+
+      //style
+      "components/%s/components.style.tsx",
 
       // reducers
       "reducers/%s/create.ts",

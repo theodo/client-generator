@@ -6,7 +6,8 @@ import PropTypes from 'prop-types';
 import { retrieve, reset } from '../../actions/{{{lc}}}/show';
 import { del } from '../../actions/{{{lc}}}/delete';
 import { RootState } from '../../../redux/types';
-import 'bootstrap/dist/css/bootstrap.css';
+
+import { DefaultTable, Message, ButtonLink, Button } from './components.style';
 
 interface Props {
   retrieved: any;
@@ -59,32 +60,32 @@ class Show extends Component<Props> {
         <h1>Show {item && item['@id']}</h1>
 
         {this.props.loading && (
-          <div className="alert alert-info" role="status">
+          <Message role="status">
             Loading...
-          </div>
+          </Message>
         )}
         {this.props.error && (
-          <div className="alert alert-danger" role="alert">
+          <Message role="alert">
             <span className="fa fa-exclamation-triangle" aria-hidden="true" />{' '}
             {this.props.error}
-          </div>
+          </Message>
         )}
         {this.props.deleteError && (
-          <div className="alert alert-danger" role="alert">
+          <Message role="alert">
             <span className="fa fa-exclamation-triangle" aria-hidden="true" />{' '}
             {this.props.deleteError}
-          </div>
+          </Message>
         )}
 
         {item && (
-          <table className="table table-responsive table-striped table-hover">
+          <DefaultTable>
             <thead>
               <tr>
                 <th>Field</th>
                 <th>Value</th>
               </tr>
             </thead>
-            <tbody>
+            <tbody className="striped">
               {{#each fields}}
               <tr>
                 <th scope="row">{{ name }}</th>
@@ -92,19 +93,19 @@ class Show extends Component<Props> {
               </tr>
               {{/ each}}
             </tbody>
-          </table>
+          </DefaultTable>
         )}
-        <Link to=".." className="btn btn-primary">
+        <ButtonLink to="..">
           Back to list
-        </Link>
+        </ButtonLink>
         {item && (
-          <Link to={`/{{{name}}}/edit/${encodeURIComponent(item['@id'])}`}>
-            <button className="btn btn-warning">Edit</button>
-          </Link>
+          <ButtonLink to={`/{{{name}}}/edit/${encodeURIComponent(item['@id'])}`}>
+            Edit
+          </ButtonLink>
         )}
-        <button onClick={this.del} className="btn btn-danger">
+        <Button onClick={this.del}>
           Delete
-        </button>
+        </Button>
       </div>
     );
   }

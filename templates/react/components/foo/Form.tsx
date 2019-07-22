@@ -3,7 +3,8 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import {Formik, Field, FormikProps } from 'formik';
 import TextField from '@material-ui/core/TextField';
-import 'bootstrap/dist/css/bootstrap.css';
+
+import { Button } from './components.style';
 
 interface Props {
   initialValues: any;
@@ -105,9 +106,9 @@ class Form extends Component<Props> {
                   </>
                 )}
               /> */}
-          <button type="submit" className="btn btn-success">
+          <Button type="submit">
             Submit
-          </button>
+          </Button>
         </form>
       )}/>
     );

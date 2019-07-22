@@ -7,7 +7,8 @@ import Form from './Form';
 import { retrieve, update, reset } from '../../actions/{{{lc}}}/update';
 import { del } from '../../actions/{{{lc}}}/delete';
 import { RootState } from '../../../redux/types';
-import 'bootstrap/dist/css/bootstrap.css';
+
+import { Message, ButtonLink, Button } from './components.style';
 
 interface Props {
   retrieved: any;
@@ -69,39 +70,39 @@ class Update extends Component<Props> {
         <h1>Edit {item && item['@id']}</h1>
 
         {this.props.created && (
-          <div className="alert alert-success" role="status">
+          <Message role="status">
             {this.props.created['@id']} created.
-          </div>
+          </Message>
         )}
         {this.props.updated && (
-          <div className="alert alert-success" role="status">
+          <Message role="status">
             {this.props.updated['@id']} updated.
-          </div>
+          </Message>
         )}
         {(this.props.retrieveLoading ||
           this.props.updateLoading ||
           this.props.deleteLoading) && (
-            <div className="alert alert-info" role="status">
+            <Message role="status">
               Loading...
-          </div>
+          </Message>
           )}
         {this.props.retrieveError && (
-          <div className="alert alert-danger" role="alert">
-            <span className="fa fa-exclamation-triangle" aria-hidden="true" />{' '}
+          <Message role="alert">
+            <span aria-hidden="true" />{' '}
             {this.props.retrieveError}
-          </div>
+          </Message>
         )}
         {this.props.updateError && (
-          <div className="alert alert-danger" role="alert">
-            <span className="fa fa-exclamation-triangle" aria-hidden="true" />{' '}
+          <Message role="alert">
+            <span aria-hidden="true" />{' '}
             {this.props.updateError}
-          </div>
+          </Message>
         )}
         {this.props.deleteError && (
-          <div className="alert alert-danger" role="alert">
-            <span className="fa fa-exclamation-triangle" aria-hidden="true" />{' '}
+          <Message role="alert">
+            <span aria-hidden="true" />{' '}
             {this.props.deleteError}
-          </div>
+          </Message>
         )}
 
         {item && (
@@ -110,12 +111,12 @@ class Update extends Component<Props> {
             initialValues={item}
           />
         )}
-        <Link to=".." className="btn btn-primary">
+        <ButtonLink to="..">
           Back to list
-        </Link>
-        <button onClick={this.del} className="btn btn-danger">
+        </ButtonLink>
+        <Button onClick={this.del}>
           Delete
-        </button>
+        </Button>
       </div>
     );
   }

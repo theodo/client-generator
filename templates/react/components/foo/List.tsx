@@ -5,10 +5,11 @@ import PropTypes from 'prop-types';
 import { list, reset } from '../../actions/{{{lc}}}/list';
 import { RootState } from '../../../redux/types';
 import { Dispatch } from 'redux';
-import 'bootstrap/dist/css/bootstrap.css';
 
 import ArrowDownward from '@material-ui/icons/ArrowDownward';
 import ArrowUpward from '@material-ui/icons/ArrowUpward';
+
+import { DefaultTable, Message, ButtonLink } from './components.style';
 
 interface Props {
   retrieved: any;
@@ -94,24 +95,26 @@ class List extends Component<Props, State> {
         <h1>{{{title}}} List</h1>
 
         {this.props.loading && (
-          <div className="alert alert-info">Loading...</div>
+          <Message>Loading...</Message>
         )}
         {this.props.deletedItem && (
-          <div className="alert alert-success">
+          <Message>
             {this.props.deletedItem['@id']} deleted.
-          </div>
+          </Message>
         )}
         {this.props.error && (
-          <div className="alert alert-danger">{this.props.error}</div>
+          <Message>
+            {this.props.error}
+          </Message>
         )}
 
         <p>
-          <Link to="create" className="btn btn-primary">
+          <ButtonLink to="create">
             Create
-          </Link>
+          </ButtonLink>
         </p>
 
-        <table className="table table-responsive table-striped table-hover">
+        <DefaultTable>
           <thead>
             <tr>
               <th>id</th>
@@ -129,7 +132,7 @@ class List extends Component<Props, State> {
               <th colSpan={2} />
             </tr>
           </thead>
-          <tbody>
+          <tbody className="striped">
             {this.props.retrieved &&
               this.sortList(this.props.retrieved['hydra:member']).map(item => (
                 <tr key={item['@id']}>
@@ -142,21 +145,19 @@ class List extends Component<Props, State> {
                   <td>{{#if reference}}{this.renderLinks('{{{reference.name}}}', item['{{{name}}}'])}{{else}}{item['{{{name}}}']}{{/if}}</td>
 {{/each}}
                   <td>
-                    <Link to={`show/${encodeURIComponent(item['@id'])}`}>
-                      <span className="fa fa-search" aria-hidden="true" />
+                    <ButtonLink to={`show/${encodeURIComponent(item['@id'])}`}>
                       <span>Show</span>
-                    </Link>
+                    </ButtonLink>
                   </td>
                   <td>
-                    <Link to={`edit/${encodeURIComponent(item['@id'])}`}>
-                      <span className="fa fa-pencil" aria-hidden="true" />
+                    <ButtonLink to={`edit/${encodeURIComponent(item['@id'])}`}>
                       <span>Edit</span>
-                    </Link>
+                    </ButtonLink>
                   </td>
                 </tr>
               ))}
           </tbody>
-        </table>
+        </DefaultTable>
 
         {this.pagination()}
       </div>
@@ -176,32 +177,32 @@ class List extends Component<Props, State> {
 
     return (
       <nav aria-label="Page navigation">
-        <Link
+        <ButtonLink
           to="."
-          className={`btn btn-primary${previous ? '' : ' disabled'}`}
+          disabled={!previous}          
         >
           <span aria-hidden="true">&lArr;</span> First
-        </Link>
-        <Link
+        </ButtonLink>
+        <ButtonLink
           to={
             !previous || previous === first ? '.' : encodeURIComponent(previous)
           }
-          className={`btn btn-primary${previous ? '' : ' disabled'}`}
+          disabled={!previous}
         >
           <span aria-hidden="true">&larr;</span> Previous
-        </Link>
-        <Link
+        </ButtonLink>
+        <ButtonLink
           to={next ? encodeURIComponent(next) : '#'}
-          className={`btn btn-primary${next ? '' : ' disabled'}`}
+          disabled={!next}
         >
           Next <span aria-hidden="true">&rarr;</span>
-        </Link>
-        <Link
+        </ButtonLink>
+        <ButtonLink
           to={last ? encodeURIComponent(last) : '#'}
-          className={`btn btn-primary${next ? '' : ' disabled'}`}
+          disabled={!next}
         >
           Last <span aria-hidden="true">&rArr;</span>
-        </Link>
+        </ButtonLink>
       </nav>
     );
   }
@@ -214,7 +215,7 @@ class List extends Component<Props, State> {
     }
 
     return (
-      <Link to={`../${type}/show/${encodeURIComponent(items)}`}>{items}</Link>
+      <ButtonLink to={`../${type}/show/${encodeURIComponent(items)}`}>{items}</ButtonLink>
     );
   };
 }

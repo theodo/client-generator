@@ -6,7 +6,8 @@ import Form from './Form';
 import { create, reset } from '../../actions/{{{lc}}}/create';
 import { Dispatch } from 'redux';
 import { RootState } from '../../../redux/types';
-import 'bootstrap/dist/css/bootstrap.css';
+
+import { Message, ButtonLink } from './components.style';
 
 interface Props {
   error:any;
@@ -43,21 +44,21 @@ class Create extends Component<Props> {
         <h1>New {{{title}}}</h1>
 
         {this.props.loading && (
-          <div className="alert alert-info" role="status">
+          <Message role="status">
             Loading...
-          </div>
+          </Message>
         )}
         {this.props.error && (
-          <div className="alert alert-danger" role="alert">
-            <span className="fa fa-exclamation-triangle" aria-hidden="true" />{' '}
+          <Message role="alert">
+            <span aria-hidden="true" />
             {this.props.error}
-          </div>
+          </Message>
         )}
 
         <Form onSubmit={this.props.create} initialValues={this.props.item} />
-        <Link to="." className="btn btn-primary">
+        <ButtonLink to=".">
           Back to list
-        </Link>
+        </ButtonLink>
       </div>
     );
   }
