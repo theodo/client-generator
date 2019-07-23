@@ -1,4 +1,3 @@
-import { SubmissionError } from 'redux-form';
 import { fetch } from '../../utils/dataAccess';
 
 export function error(error) {
@@ -26,11 +25,6 @@ export function create(values) {
       .then(retrieved => dispatch(success(retrieved)))
       .catch(e => {
         dispatch(loading(false));
-
-        if (e instanceof SubmissionError) {
-          dispatch(error(e.errors._error));
-          throw e;
-        }
 
         dispatch(error(e.message));
       });

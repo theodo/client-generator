@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-// import { Field, reduxForm } from 'redux-form';
 import PropTypes from 'prop-types';
 import {Formik, Field } from 'formik';
 import TextField from '@material-ui/core/TextField';

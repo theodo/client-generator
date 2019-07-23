@@ -123,17 +123,17 @@ class Update extends Component<Props> {
 }
 
 const mapStateToProps = (state: RootState) => ({
-  retrieved: state.{{{lc}}}.update.retrieved,
-  retrieveError: state.{{{lc}}}.update.retrieveError,
-  retrieveLoading: state.{{{lc}}}.update.retrieveLoading,
-  updateError: state.{{{lc}}}.update.updateError,
-  updateLoading: state.{{{lc}}}.update.updateLoading,
-  deleteError: state.{{{lc}}}.del.error,
-  deleteLoading: state.{{{lc}}}.del.loading,
-  eventSource: state.{{{lc}}}.update.eventSource,
-  created: state.{{{lc}}}.create.created,
-  deleted: state.{{{lc}}}.del.deleted,
-  updated: state.{{{lc}}}.update.updated
+  retrieved: state.{{{lc}}}Admin.update.retrieved,
+  retrieveError: state.{{{lc}}}Admin.update.retrieveError,
+  retrieveLoading: state.{{{lc}}}Admin.update.retrieveLoading,
+  updateError: state.{{{lc}}}Admin.update.updateError,
+  updateLoading: state.{{{lc}}}Admin.update.updateLoading,
+  deleteError: state.{{{lc}}}Admin.del.error,
+  deleteLoading: state.{{{lc}}}Admin.del.loading,
+  eventSource: state.{{{lc}}}Admin.update.eventSource,
+  created: state.{{{lc}}}Admin.create.created,
+  deleted: state.{{{lc}}}Admin.del.deleted,
+  updated: state.{{{lc}}}Admin.update.updated
 });
 
 const mapDispatchToProps = (dispatch: Dispatch) => ({

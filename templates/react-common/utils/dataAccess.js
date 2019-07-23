@@ -1,5 +1,4 @@
 import { ENTRYPOINT } from '../config/entrypoint';
-import { SubmissionError } from 'redux-form';
 import get from 'lodash/get';
 import has from 'lodash/has';
 import mapValues from 'lodash/mapValues';
@@ -29,8 +28,6 @@ export function fetch(id, options = {}) {
       json.violations.map(
         violation => (errors[violation.propertyPath] = violation.message)
       );
-
-      throw new SubmissionError(errors);
     });
   });
 }

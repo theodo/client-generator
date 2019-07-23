@@ -1,4 +1,3 @@
-import { SubmissionError } from 'redux-form';
 import {
   fetch,
   extractHubURL,
@@ -83,11 +82,6 @@ export function update(item, values) {
       })
       .catch(e => {
         dispatch(updateLoading(false));
-
-        if (e instanceof SubmissionError) {
-          dispatch(updateError(e.errors._error));
-          throw e;
-        }
 
         dispatch(updateError(e.message));
       });

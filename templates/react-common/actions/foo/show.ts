@@ -9,25 +9,25 @@ import { createCustomAction } from 'typesafe-actions';
 import { Dispatch } from 'redux';
 
 
-export const resetAction = createCustomAction('{{{uc}}}_SHOW_RESET', type => {
+export const resetAction = createCustomAction('{{{uc}}}_ADMIN_SHOW_RESET', type => {
   return () => ({ type });
 });
-export const errorAction = createCustomAction('{{{uc}}}_SHOW_ERROR', type => {
+export const errorAction = createCustomAction('{{{uc}}}_ADMIN_SHOW_ERROR', type => {
   return (error: string | null) => ({ type, error });
 });
-export const loadingAction = createCustomAction('{{{uc}}}_SHOW_LOADING', type => {
+export const loadingAction = createCustomAction('{{{uc}}}_ADMIN_SHOW_LOADING', type => {
   return (loading: boolean) => ({ type, loading });
 });
-export const successAction = createCustomAction('{{{uc}}}_SHOW_SUCCESS', type => {
+export const successAction = createCustomAction('{{{uc}}}_ADMIN_SHOW_SUCCESS', type => {
   return (retrieved: any) => ({ type, retrieved });
 });
-export const mercureOpenAction = createCustomAction('{{{uc}}}_SHOW_MERCURE_OPEN', type => {
+export const mercureOpenAction = createCustomAction('{{{uc}}}_ADMIN_SHOW_MERCURE_OPEN', type => {
   return (eventSource: any) => ({ type, eventSource });
 });
-export const mercureDeletedAction = createCustomAction('{{{uc}}}_SHOW_MERCURE_DELETED', type => {
+export const mercureDeletedAction = createCustomAction('{{{uc}}}_ADMIN_SHOW_MERCURE_DELETED', type => {
   return (retrieved: any) => ({ type, retrieved });
 });
-export const mercureMessageAction = createCustomAction('{{{uc}}}_SHOW_MERCURE_MESSAGE', type => {
+export const mercureMessageAction = createCustomAction('{{{uc}}}_ADMIN_SHOW_MERCURE_MESSAGE', type => {
   return (retrieved: any) => ({ type, retrieved });
 });
 

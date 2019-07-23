@@ -65,7 +65,7 @@ class Create extends Component<Props> {
 }
 
 const mapStateToProps = (state: RootState) => {
-  const { created, error, loading } = state.{{{lc}}}.create;
+  const { created, error, loading } = state.{{{lc}}}Admin.create;
   return { created, error, loading };
 };
 

@@ -1,16 +1,15 @@
-import { SubmissionError } from 'redux-form';
 import { fetch } from '../../utils/dataAccess';
 
 import { createCustomAction } from 'typesafe-actions';
 import { Dispatch } from 'redux';
 
-export const errorAction = createCustomAction('{{{uc}}}_CREATE_ERROR', type => {
+export const errorAction = createCustomAction('{{{uc}}}_ADMIN_CREATE_ERROR', type => {
   return (error: string | null) => ({ type, error });
 });
-export const loadingAction = createCustomAction('{{{uc}}}_CREATE_LOADING', type => {
+export const loadingAction = createCustomAction('{{{uc}}}_ADMIN_CREATE_LOADING', type => {
   return (loading: boolean) => ({ type, loading });
 });
-export const successAction = createCustomAction('{{{uc}}}_CREATE_SUCCESS', type => {
+export const successAction = createCustomAction('{{{uc}}}_ADMIN_CREATE_SUCCESS', type => {
   return (created: any) => ({ type, created });
 });
 
@@ -28,11 +27,6 @@ export function create(values: any) {
       .then((retrieved: any) => dispatch(successAction(retrieved)))
       .catch((e: any) => {
         dispatch(loadingAction(false));
-
-        if (e instanceof SubmissionError) {
-          //dispatch(errorAction(e.errors._error)); //to correct
-          throw e;
-        }
 
         dispatch(errorAction(e.message));
       });

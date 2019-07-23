@@ -108,13 +108,13 @@ class Show extends Component {
 }
 
 const mapStateToProps = state => ({
-  retrieved: state.{{{lc}}}.show.retrieved,
-  error: state.{{{lc}}}.show.error,
-  loading: state.{{{lc}}}.show.loading,
-  eventSource: state.{{{lc}}}.show.eventSource,
-  deleteError: state.{{{lc}}}.del.error,
-  deleteLoading: state.{{{lc}}}.del.loading,
-  deleted: state.{{{lc}}}.del.deleted
+  retrieved: state.{{{lc}}}Admin.show.retrieved,
+  error: state.{{{lc}}}Admin.show.error,
+  loading: state.{{{lc}}}Admin.show.loading,
+  eventSource: state.{{{lc}}}Admin.show.eventSource,
+  deleteError: state.{{{lc}}}Admin.del.error,
+  deleteLoading: state.{{{lc}}}Admin.del.loading,
+  deleted: state.{{{lc}}}Admin.del.deleted
 });
 
 const mapDispatchToProps = dispatch => ({

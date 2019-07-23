@@ -52,7 +52,7 @@ class Create extends Component {
 }
 
 const mapStateToProps = state => {
-  const { created, error, loading } = state.{{{lc}}}.create;
+  const { created, error, loading } = state.{{{lc}}}Admin.create;
   return { created, error, loading };
 };
 

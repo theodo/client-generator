@@ -1,4 +1,3 @@
-import { SubmissionError } from 'redux-form';
 import {
   fetch,
   extractHubURL,
@@ -15,13 +14,13 @@ import { Dispatch } from 'redux';
 
 
 
-export const mercureOpenAction = createCustomAction('{{{uc}}}_UPDATE_MERCURE_OPEN', type => {
+export const mercureOpenAction = createCustomAction('{{{uc}}}_ADMIN_UPDATE_MERCURE_OPEN', type => {
   return (eventSource: any | null) => ({ type, eventSource });
 });
-export const mercureDeletedAction = createCustomAction('{{{uc}}}_UPDATE_MERCURE_DELETED', type => {
+export const mercureDeletedAction = createCustomAction('{{{uc}}}_ADMIN_UPDATE_MERCURE_DELETED', type => {
   return (retrieved: any | null) => ({ type, retrieved });
 });
-export const mercureMessageAction = createCustomAction('{{{uc}}}_UPDATE_MERCURE_MESSAGE', type => {
+export const mercureMessageAction = createCustomAction('{{{uc}}}_ADMIN_UPDATE_MERCURE_MESSAGE', type => {
   return (retrieved: any | null) => ({ type, retrieved });
 });
 
@@ -43,18 +42,18 @@ export function mercureSubscribe(hubURL: any, topic: any) {
   };
 }
 
-export const resetAction = createCustomAction('{{{uc}}}_UPDATE_RESET', type => {
+export const resetAction = createCustomAction('{{{uc}}}_ADMIN_UPDATE_RESET', type => {
   return () => ({ type });
 });
 
 
-export const retrieveErrorAction = createCustomAction('{{{uc}}}_UPDATE_RETRIEVE_ERROR', type => {
+export const retrieveErrorAction = createCustomAction('{{{uc}}}_ADMIN_UPDATE_RETRIEVE_ERROR', type => {
   return (retrieveError: string | null) => ({ type, retrieveError });
 });
-export const retrieveLoadingAction = createCustomAction('{{{uc}}}_UPDATE_RETRIEVE_LOADING', type => {
+export const retrieveLoadingAction = createCustomAction('{{{uc}}}_ADMIN_UPDATE_RETRIEVE_LOADING', type => {
   return (retrieveLoading: boolean | null) => ({ type, retrieveLoading });
 });
-export const retrieveSuccessAction = createCustomAction('{{{uc}}}_UPDATE_RETRIEVE_SUCCESS', type => {
+export const retrieveSuccessAction = createCustomAction('{{{uc}}}_ADMIN_UPDATE_RETRIEVE_SUCCESS', type => {
   return (retrieved: any | null) => ({ type, retrieved });
 });
 
@@ -83,13 +82,13 @@ export function retrieve(id: string) {
   };
 }
 
-export const updateErrorAction = createCustomAction('{{{uc}}}_UPDATE_UPDATE_ERROR', type => {
+export const updateErrorAction = createCustomAction('{{{uc}}}_ADMIN_UPDATE_UPDATE_ERROR', type => {
   return (updateError: string | null) => ({ type, updateError });
 });
-export const updateLoadingAction = createCustomAction('{{{uc}}}_UPDATE_UPDATE_LOADING', type => {
+export const updateLoadingAction = createCustomAction('{{{uc}}}_ADMIN_UPDATE_UPDATE_LOADING', type => {
   return (updateLoading: boolean | null) => ({ type, updateLoading });
 });
-export const updateSuccessAction = createCustomAction('{{{uc}}}_UPDATE_UPDATE_SUCCESS', type => {
+export const updateSuccessAction = createCustomAction('{{{uc}}}_ADMIN_UPDATE_UPDATE_SUCCESS', type => {
   return (updated: any | null) => ({ type, updated });
 });
 
@@ -120,11 +119,6 @@ export function update(item: any, values: any) {
       })
       .catch((e: any) => {
         dispatch(updateLoadingAction(false));
-
-        if (e instanceof SubmissionError) {
-          //dispatch(updateErrorAction(e.errors._error)); type error
-          throw e;
-        }
 
         dispatch(updateErrorAction(e.message));
       });

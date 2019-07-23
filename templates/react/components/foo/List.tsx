@@ -226,9 +226,9 @@ const mapStateToProps = (state: RootState) => {
     loading,
     error,
     eventSource,
-  } = state.{{{lc}}}.list;
+  } = state.{{{lc}}}Admin.list;
 
-  const { deleted } = state.{{{lc}}}.del;
+  const { deleted } = state.{{{lc}}}Admin.del;
   return { retrieved, loading, error, eventSource, deletedItem: deleted };
 };
 
